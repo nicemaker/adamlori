@@ -6,15 +6,46 @@
     <title>Sound Book</title>
 
 {% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "ongoingon/style/main.css" %}">
-<script src="{% static "ongoingon/js/jquery-1.9.1.min.js" %}"></script>
-<script src="{% static "ongoingon/js/mdmn.js" %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static "soundbook/style/main.css" %}">
+<script src="{% static "soundbook/js/jquery-1.9.1.min.js" %}"></script>
+<script src="{% static "soundbook/js/soundbook.js" %}"></script>
 
 </head>
 
 <body>
 
-
+<div id="content">
+    <div id="contact">
+        <div id="form">
+            Here comes contact form
+        </div>
+        <div id="quickSlip">
+                <div style="float:right">
+                    <div class="social">L</div>
+                    <div class="social">F</div>
+                    <div>Slide to contact</div>
+                </div>
+                
+               
+               
+        </div>
+    </div>
+    <div style="clear: both"></div>
+    <div id="items" class="grid">
+        <div class="grid-block item"><h3>Outland</h3></div>
+        <div class="grid-block item"><h3>No Easy Way Out</h3></div>
+        <div class="grid-block item"><h3>Alteration</h3></div>
+        <div class="grid-block item"><h3>Alice</h3></div>
+    </div>
+    <div id="categories" class="grid">
+        <div class="grid-block category"><h3>Drama</h3></div>
+        <div class="grid-block category"><h3>Tension</h3></div>
+        <div class="grid-block category"><h3>Comedy</h3></div>
+        <div class="grid-block category"><h3>Ethnic/World</h3></div>
+        <div class="grid-block category"><h3>Contemporary</h3></div>
+        <div class="grid-block category"><h3>Fantasy/Sci-Fi</h3></div>
+    </div>
+</div>
 
 </body>
 </html>
