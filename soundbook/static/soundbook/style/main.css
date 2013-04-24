@@ -13,14 +13,31 @@ div{
     padding:0px;
 }
 
+#cache{
+    position:absolute;
+    width:480px;
+    overflow:hidden;
+    left:480px;
+}
+
+
+#content{
+    position:relative;
+    margin-top: 40px;
+    left:-480px;
+    width:1000px;
+}
+
+
+
 .grid{
     float:left;
-    width:600px;
-    margin:0px 0px 0px 20px;
+    width:480px;
+    margin:0px 0px 0px 0px;
 }
 
 #items.grid {
-    width:495px;
+    clear:left;
 }
 
 
@@ -32,15 +49,17 @@ div{
     background: #222222;
     width:150px;
     height:150px;
+    left:10px;
+    
 }
 
-.categories{
-
+#categories{
+    background: #333333;
 }
 
 .item{
-    width:160px;
-    height:90px;
+    width:150px;
+    height:80px;
     background: #555555;
 }
 
@@ -61,17 +80,19 @@ div{
 }
 
 #contact{
-    position: relative;
-    left:495px;
-    margin-left:40px;
-    width: 460px;
+    position: fixed;
+    left:480px;
+    top:-260px;
+    margin-left:0px;
+    width: 480px;
     height: 300px;
     background: #222222;
+    z-index: 999;
 }
 
 #quickSlip{
     position:absolute;
-    background: #000000;
+    background: #AAAAAA;
     bottom:0px;
     width:100%;
 }
@@ -82,6 +103,11 @@ div{
     float: left;
     background: #ffffff;
     margin: 0px 5px 0px 0px;
+    color: #666666;
+    padding: 2px 0px 0px 2px;
+    font-size: 20px;
+    font-weight: 400;
+    overflow: hidden;
 }
 
 .right{
@@ -90,6 +116,81 @@ div{
     right: 0px;
 }
 
+.contactSlider{
+    float: left;
+}
+
+#showreel{
+    position: relative;
+    width:480px;
+    height:270px;
+    left:480px;
+    background: #888888;
+}
+
+.controls{
+    width:100%;
+    height:100%;
+}
+
+.interactive{
+    cursor: pointer;
+}
+
+.play{
+    display:block;
+    width:70px;
+    height:70px;
+    position:absolute;
+    background-image: url('images/play.png');
+    background-size: 100% 100%;
+    top:50%;
+    left:50%;
+    margin-left: -35px;
+    margin-top: -40px;
+    
+}
+
+.read{
+    display:block;
+    width:50px;
+    height:50px;
+    position:absolute;
+    background:#444444;
+    bottom:10px;
+    left:50px;
+}
+
+.listen{
+    display:block;
+    width:50px;
+    height:50px;
+    position:absolute;
+    background:#444444;
+    bottom:10px;
+}
+
+#festivals{
+    position:relative;
+    clear: left;
+    left:480px;
+    background: #666666;
+    height:50px;
+    
+}
+
+.name{
+    position:absolute;
+    bottom:40px;
+    right:10px;
+}
+
+.name h1{
+    font-size: 30px;
+    line-height: 0px;
+    margin: 0px;
+    padding: 0px;
+}
 
 
 
