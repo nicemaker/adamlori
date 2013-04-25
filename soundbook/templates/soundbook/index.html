@@ -7,63 +7,114 @@
 
 {% load staticfiles %}
 <link rel="stylesheet" type="text/css" href="{% static "soundbook/style/main.css" %}">
+    <link rel="stylesheet" type="text/css" href="{% static "soundbook/style/jquery-ui-1.10.2.custom.css" %}">
 <script src="{% static "soundbook/js/jquery-1.9.1.min.js" %}"></script>
+<script src="{% static "soundbook/js/jquery-ui-1.10.2.custom.min.js" %}"></script>
 <script src="{% static "soundbook/js/soundbook.js" %}"></script>
 
 </head>
 
 <body>
 
+
+
 <div id="contact">
-    <div id="form">
-        Here comes contact form
+    <h2>Contact</h2>
+    <div id="contactForm">
+        <div><input type="text" value="Your Name"/></div>
+        <div><input type="text" value="Email"/></div>
+        <div><textarea>Your Message</textarea></div>
+        <input type="submit" value="send"/>
     </div>
     <div id="quickSlip">
             <div style="float:right;margin:5px">
                 <div class="social">L</div>
                 <div class="social">F</div>
-                <div class="interactive contactSlider">Slide to contact Adam</div>
+                <div class="interactive contactSlider">
+                    <div class="handle"></div>
+                </div>
+                <div style="float:left;margin-left: 10px">Slide to contact<br/> Adam</div>
             </div>          
     </div>
-    
 </div>
 
-
 <div id="cache">
+    
     <div id="content">
-        <div id="showreel">
-            <div id="player">
+        
+        <div class="row" id="row1">
+            <div id="showreel" class="col player">
                 Showreel Player
-                <div id="controls">
+                <div class="controls">
                     <div class="interactive play"></div>
-                    <div class="interactive read">
-                        Read more
-                    </div>
-                    <div class="interactive listen">
-                        Listen more
-                    </div>
-                     <div class="name">
-                        <h1>ADAM LORI</h1>
-                    </div>
+                </div>
+                <div class="interactive read">
+                    Read more
+                </div>
+                <div class="interactive listen">
+                    Listen more
+                </div>
+                 <div class="name">
+                    <h1>ADAM LORI</h1>
+                    <h2>Film Composer</h2>
+                </div>
+            </div>
+            <div id="readMore" class="col">
+                <div class="interactive back">
+                    Back to Showreel
+                </div>
+                <div class="text">
+                    <h1>ADAM LORI</h1>
+<p>
+Pebbles, pebbles
+Sally's got the blues
+Storm come whistlin
+She forgot her shoes.
+<p/><p>
+One pickle, two pickle
+Pepper on the floor
+Wasted, wasted
+Salad in the drawer
+<p/><p>
+Sally's got nowhere to go, 
+Two bare feet and a field of snow. 
+</p>
                 </div>
             </div>
         </div>
-        <div id="items" class="grid">
-            <div class="grid-block item"><h3>Outland</h3></div>
-            <div class="grid-block item"><h3>No Easy Way Out</h3></div>
-            <div class="grid-block item"><h3>Alteration</h3></div>
-            <div class="grid-block item"><h3>Alice</h3></div>
+        <div class="row">
+            <div id="portfolioPlayer" class="col player">
+                Portfolio Player
+                <div class="controls">
+                    <div class="interactive play"></div>
+                </div>
+                <div class="interactive back">
+                    Back
+                </div>
+            </div>
+            <div id="portfolio" class="col grid">
+                <div class="interactive back">
+                    Back to Genres
+                </div>
+                <div class="interactive item"><h3>Outland</h3></div>
+                <div class="interactive item"><h3>No Easy Way Out</h3></div>
+                <div class="interactive item"><h3>Alteration</h3></div>
+                <div class="interactive item"><h3>Alice</h3></div>
+            </div>
+            <div id="categories" class="col grid">
+                <div class="interactive item"><h3>Drama</h3></div>
+                <div class="interactive item"><h3>Tension</h3></div>
+                <div class="interactive item"><h3>Comedy</h3></div>
+                <div class="interactive item"><h3>Ethnic/World</h3></div>
+                <div class="interactive item"><h3>Contemporary</h3></div>
+                <div class="interactive item"><h3>Fantasy/Sci-Fi</h3></div>
+            </div>
         </div>
-        <div id="categories" class="grid">
-            <div class="grid-block category"><h3>Drama</h3></div>
-            <div class="grid-block category"><h3>Tension</h3></div>
-            <div class="grid-block category"><h3>Comedy</h3></div>
-            <div class="grid-block category"><h3>Ethnic/World</h3></div>
-            <div class="grid-block category"><h3>Contemporary</h3></div>
-            <div class="grid-block category"><h3>Fantasy/Sci-Fi</h3></div>
-        </div>
-        <div id="festivals" class="grid">
-            As seen in
+        
+        <div class="row">
+            <div id="festivals" class="col">
+                As seen in
+            </div>
         </div>
         
         
