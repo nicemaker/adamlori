@@ -10,6 +10,7 @@ var soundbook = (function($){
 	$(".read").click(onReadMore);
 	$(".listen").click( function(){showCol(1,2)} );
 	$("#categories .item").click(onCategory);
+	$("#portfolio .item").click(onPortfolioItem);
 	showCol(0,0);
 	showCol(1,2);
 	showCol(2,0);
@@ -22,7 +23,17 @@ var soundbook = (function($){
 	onResize();
     })
     
-    
+    /*
+     * Loads Video/audio for selected project and opens the player when ready
+     */
+    function onPortfolioItem(e) {
+	selected = $(e.target);
+	$("#portfolioPlayer .back").one('click',function(e){
+	    showCol(1,1);
+	})
+	showCol(1,0);
+	
+    }
     /*sets positioning after resize
      *
      */
@@ -45,10 +56,10 @@ var soundbook = (function($){
 	var offset = $("#quickSlip").position().top;
 	var pos = parseInt( $(this).css('left').replace('px'));
 	if ( pos>10 ) {
-	    $('#contact').animate({top:0},200);
+	    $('#contact').animate({top:0},300,'easeInOutCubic');
 	}
 	else{
-	    $('#contact').animate({top:-offset},200);
+	    $('#contact').animate({top:-offset},300,'easeInOutCubic');
 	}
 	
 	
@@ -91,7 +102,7 @@ var soundbook = (function($){
     function showCol(iRow,iCol) {
 	var row = $(".row:eq("+ iRow + ")")
 	var col = row.children( ".col:eq("+ iCol + ")").first();
-	row.animate( {left: -col.position().left,height: col.height() },200 );
+	row.animate( {left: -col.position().left,height: col.height() },300,'easeInOutCubic' );
     }
     
     function setState( name ){

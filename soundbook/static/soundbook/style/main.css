@@ -196,7 +196,7 @@ input:focus, select:focus, textarea:focus {
 
 
 #readMore{
-    background: #AAAAAA;
+    background: #777777;
 
 }
 
@@ -238,6 +238,18 @@ input:focus, select:focus, textarea:focus {
     height:270px;
     background: #888888;
 }
+
+#portfolioPlayer.player{
+    background: #AAAAAA;
+
+}
+
+#portfolioPlayer .back{
+    background: #666666;
+
+}
+
+
 
 .play{
     display:block;
@@ -296,7 +308,7 @@ input:focus, select:focus, textarea:focus {
     position:relative;
     clear: left;
     background: #666666;
-    height:50px;
+    height:80px;
     
 }
 
