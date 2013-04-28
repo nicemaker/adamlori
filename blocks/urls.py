@@ -5,7 +5,6 @@ from django.conf.urls import patterns, include, url
 # admin.autodiscover()
 
 from soundbook import views
-from rest_framework.urlpatterns import format_suffix_patterns
 
 urlpatterns = patterns('',
     # Examples:
@@ -17,10 +16,7 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^$', include('soundbook.urls')),
-    url(r'^samples/$', views.SampleList.as_view()),
-    url(r'^samples/(?P<pk>[0-9]+)/$', views.SampleDetail.as_view()),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    url(r'^post/', 'blocks.views.post', name='post'),
+    url(r'^get/', 'blocks.views.get', name='get'),
+    url(r'^$', 'blocks.views.index', name='index'),
 )
-
-urlpatterns = format_suffix_patterns(urlpatterns)

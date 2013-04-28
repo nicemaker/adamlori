@@ -31,6 +31,7 @@ var soundbook = (function($){
 	$("#portfolioPlayer .back").one('click',function(e){
 	    showCol(1,1);
 	})
+	
 	showCol(1,0);
 	
     }
@@ -57,6 +58,12 @@ var soundbook = (function($){
 	var pos = parseInt( $(this).css('left').replace('px'));
 	if ( pos>10 ) {
 	    $('#contact').animate({top:0},300,'easeInOutCubic');
+	    $('body').one('click',function(e){
+		if (e.target.nodeName == "BODY"){
+		    $('#contact').animate({top:-offset},300,'easeInOutCubic');
+		    $('.handle').css({left:0});
+		}
+	    })
 	}
 	else{
 	    $('#contact').animate({top:-offset},300,'easeInOutCubic');
