@@ -5,10 +5,10 @@ from rest_framework import serializers
 class SampleSerializer(serializers.ModelSerializer):
    class Meta:
     model = Sample
-    fields = ('id', 'title', 'mediaId')
+    fields = ('id', 'title', 'mediaId', 'image')
    
     
-class GenreSerializer(serializers.Serializer):
+class GenreSerializer(serializers.ModelSerializer):
    class Meta:
     model = Genre
     fields = ('id', 'title')

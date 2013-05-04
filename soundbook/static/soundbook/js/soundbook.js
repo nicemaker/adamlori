@@ -5,6 +5,7 @@ var soundbook = (function($){
     var currentMedia = -1;
     var isHuman = 0;
     
+    
     $(document).ready( function(){
 	$(".interactive").click(onInteractive);
 	$(".read").click(onReadMore);
@@ -21,6 +22,9 @@ var soundbook = (function($){
 	
 	$('#contact').css({top:-$("#quickSlip").position().top});
 	onResize();
+	
+
+	
     })
     
     /*
