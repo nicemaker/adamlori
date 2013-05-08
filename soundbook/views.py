@@ -6,6 +6,10 @@ from soundbook.serializers import SampleSerializer
 from django.shortcuts import render
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
+from django.http import HttpResponse
+from django.views.decorators.csrf import csrf_exempt
+
+import json
 
 
 from rest_framework.views import APIView
@@ -17,13 +21,29 @@ from soundbook.forms import SampleForm
 def index(request):
     return render(request,'soundbook/index.html',{})
 
+@csrf_exempt
+def sort( request ):
+    order = json.loads( request.raw_post_data );
+    
+    data = {"type":"complete"}
+    return HttpResponse( json.dumps( data ) )
+
 
 def edit_sample(request, pk ):
     item = get_object_or_404( Sample, pk = pk )
-    if request.method == 'GET':
+    if request.method == "GET":
         form = SampleForm( instance = item )
         context = RequestContext(request, {'form' : form })
         return render_to_response( 'soundbook/sampleEdit.html', context )
+    elif request.method == "POST":
+        form = SampleForm( request.POST, request.FILES, instance=item, )
+        if form.is_valid():
+            form.save()
+        form = SampleForm( instance = form.instance ) #workaround, just simply saving the form doesn't return correct image url
+        context = RequestContext( request, {'form' : form } )
+        return render_to_response( 'soundbook/sampleEdit.html', context )
+ 
+    
 
         
         

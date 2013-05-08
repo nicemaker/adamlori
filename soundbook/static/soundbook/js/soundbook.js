@@ -10,7 +10,7 @@ var soundbook = (function($){
 	$(".interactive").click(onInteractive);
 	$(".read").click(onReadMore);
 	$(".listen").click( function(){showCol(1,2)} );
-	$("#categories .item").click(onCategory);
+	//$("#categories .item").click(onCategory);
 	$("#portfolio .item").click(onPortfolioItem);
 	showCol(0,0);
 	showCol(1,2);
