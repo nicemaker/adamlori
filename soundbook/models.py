@@ -15,14 +15,9 @@ class CModel( models.Model ):
     
     order = models.PositiveIntegerField(editable=False, default=1, db_index=True)
     
-    def className(self ):
-        return self.__class__.__name__
-    
     def parent(self):
         return None
     
-    def contentType(self):
-        return 
     
     def natural_key(self):
         return ContentType.objects.get_for_model( self ).natural_key();

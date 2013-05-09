@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+
+<html>
+<head></head>
+<body>
+    
+<script type="text/javascript">
+    //$('#sampleForm').dropzone();
+</script>
+<form method="GET" action="samples/{{ form.instance.id }}/">
+    
+    {% csrf_token %}
+
+    {{ form.as_p }}
+    <image src="{{MEDIA_URL}}{{ form.image.value }}" width="200"/></br>
+ 
+   <input type='submit' value="Save">
+        
+</form>
+</body> 
+</html>

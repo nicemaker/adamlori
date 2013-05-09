@@ -20,12 +20,8 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
+    url(r'^soundbook/', include('soundbook.urls') ),
     url(r'^$', 'soundbook.views.index', name='index'),
-    url(r'^api/samples/$', views.SampleList.as_view()),
-    url(r'^api/samples/(?P<pk>[0-9]+)/$', views.SampleDetail.as_view()),
-    url(r'^samples/(?P<pk>[0-9]+)/$', 'soundbook.views.edit_sample', name='Edit Sample' ),
-    url(r'^sort/$', 'soundbook.views.sort', name='Sort List' ),
-    url(r'^api-auth/', include('rest_framework.urls', namespace='rest_framework')),
+    
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
-urlpatterns = format_suffix_patterns(urlpatterns)

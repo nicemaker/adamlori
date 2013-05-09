@@ -8,12 +8,38 @@ body{
 
 }
 
+
 ul.grid{
     list-style: none;
     list-style-type: none;
     padding:0px;
     margin:0px;
     
+}
+
+ul.grid li{
+    cursor: pointer;
+    float: left;
+    position:relative;
+    margin:0px 5px 5px 0px;
+    width:150px;
+    height:150px;
+    left:10px;
+    background: #222222;
+    vertical-align: bottom;
+}
+
+ul.grid span{
+    position:absolute;
+    font-size: 12px;
+    bottom:5px;
+    right:5px;
+    ont-size: 16px;
+    line-height: 16px;
+    margin:0px;
+    padding: 0px;
+    font-weight: 200;
+    letter-spacing: 2px;
 }
 
 #dropzone{
