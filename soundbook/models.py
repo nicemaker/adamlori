@@ -5,8 +5,14 @@ Base Model of Content that is editable in Frontend. Needs classname, and parent 
 '''
 
 class CModel( models.Model ):
+    
+    class Meta:
+        abstract = True
+        ordering = ['order']
+        
     created = models.DateTimeField(auto_now_add=True)
     title = models.CharField( max_length=100,blank=True,default='')
+    
     order = models.PositiveIntegerField(editable=False, default=1, db_index=True)
     
     def className(self ):
@@ -24,12 +30,6 @@ class CModel( models.Model ):
     def uid(self):
         idTup = self.natural_key() + (self.id,)
         return "%s.%s:%s" % idTup
-    
-    class Meta:
-        abstract = True
-        ordering = ['order']
-    
-    
 
 
 class Genre( CModel ):

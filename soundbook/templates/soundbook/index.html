@@ -98,18 +98,15 @@ Two bare feet and a field of snow.
                 <div class="interactive back">
                     Back to Genres
                 </div>
-                <div class="interactive item"><h3>Outland</h3></div>
-                <div class="interactive item"><h3>No Easy Way Out</h3></div>
-                <div class="interactive item"><h3>Alteration</h3></div>
-                <div class="interactive item"><h3>Alice</h3></div>
+                <div class="interactive item editable"><h3>Outland</h3></div>
+                <div class="interactive item editable"><h3>No Easy Way Out</h3></div>
+                <div class="interactive item editable"><h3>Alteration</h3></div>
+                <div class="interactive item editable"><h3>Alice</h3></div>
             </div>
             <ul id="categories" class="col grid sortable">
-                <li id="soundbook.genre:1" class="interactive item"><h3>Drama</h3></li>
-                <li id="soundbook.genre:2" class="interactive item"><h3>Tension</h3></li>
-                <li id="soundbook.genre:3" class="interactive item"><h3>Comedy</h3></li>
-                <li id="soundbook.genre:4" class="interactive item"><h3>Ethnic/World</h3></li>
-                <li id="soundbook.genre:5" class="interactive item"><h3>Contemporary</h3></li>
-                <li id="soundbook.genre:6" class="interactive item"><h3>Fantasy/Sci-Fi</h3></li>
+                {% for genre in genres %}
+                <li id="{{genre.uid}}" class="interactive item editable"><h3>{{genre.title}}</h3></li>
+                {% endfor %}
             </ul>
         </div>
         

@@ -1,30 +1,40 @@
 # Create your views here.
 
-from soundbook.models import Sample
+
 from soundbook.serializers import SampleSerializer
+from soundbook.forms import SampleForm
+from soundbook.models import Genre,Sample
 
 from django.shortcuts import render
 from django.shortcuts import render_to_response, get_object_or_404
 from django.template import RequestContext
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.contenttypes.models import ContentType
 
 import json
-
 
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
-from soundbook.forms import SampleForm
+
+
+
 
 def index(request):
-    return render(request,'soundbook/index.html',{})
+    genres = Genre.objects.all()
+    return render(request,'soundbook/index.html',{"genres":genres})
 
 @csrf_exempt
 def sort( request ):
-    order = json.loads( request.raw_post_data );
-    
+    order = json.loads( request.body );
+    for i,uid in enumerate( order ):
+        modelId = uid.split(":")
+        ct = ContentType.objects.get_by_natural_key( *modelId[0].split(".") )
+        sample = get_object_or_404( ct.model_class(), pk=modelId[1] )
+        sample.order = i
+        sample.save()
     data = {"type":"complete"}
     return HttpResponse( json.dumps( data ) )
 

@@ -79,9 +79,9 @@ var soundbookAdmin = (function($){
     
     function onSorted( e ) {
 	
-	var order = '';
+	var order = [];
 	$(this).children().each(function(i){
-		order += $(this).attr("id") + ',';
+		order.push( $(this).attr("id") );
 	    })
 	    
 	$.ajax({
