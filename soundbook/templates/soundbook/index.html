@@ -12,8 +12,9 @@
 <script src="{% static "soundbook/js/jquery-1.9.1.min.js" %}"></script>
 <script src="{% static "soundbook/js/jquery-ui-1.10.2.custom.min.js" %}"></script>
 <script src="{% static "soundbook/js/dropzone.js" %}"></script>
-<script src="{% static "soundbook/js/soundbook.js" %}"></script>
 <script src="{% static "soundbook/js/soundbook-admin.js" %}"></script>
+<script src="{% static "soundbook/js/soundbook.js" %}"></script>
+
 
 </head>
 
@@ -94,7 +95,7 @@ Two bare feet and a field of snow.
                     Back to "Genre"
                 </div>
             </div>
-            <div id="portfolio" class="col grid">
+            <div id="portfolio" class="col grid editable">
                 <div class="interactive back">
                     Back to Genres
                 </div>
@@ -103,9 +104,9 @@ Two bare feet and a field of snow.
                 <div class="interactive item editable"><h3>Alteration</h3></div>
                 <div class="interactive item editable"><h3>Alice</h3></div>
             </div>
-            <ul id="categories" class="col grid sortable">
+            <ul id="categories" data-model="soundbook.genre" class="col grid editable">
                 {% for genre in genres %}
-                <li id="{{genre.uid}}" class="interactive item editable"><h3>{{genre.title}}</h3></li>
+                <li id="{{ genre.uid }}"><span>{{ genre.title }}</span></li>
                 {% endfor %}
             </ul>
         </div>
@@ -123,7 +124,8 @@ Two bare feet and a field of snow.
         
     </div>
 </div>
-    
+
+{% csrf_token %}
 
 
 </body>
