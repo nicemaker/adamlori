@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 
+{% load soundbook_text %}
+{% load soundbook_setting %}
+
 <html>
 <head>
     
     <title>Sound Book</title>
 
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static "soundbook/style/main.css" %}">
-    <link rel="stylesheet" type="text/css" href="{% static "soundbook/style/admin.css" %}">
-<link rel="stylesheet" type="text/css" href="{% static "soundbook/style/jquery-ui-1.10.2.custom.css" %}">
-<script src="{% static "soundbook/js/jquery-1.9.1.min.js" %}"></script>
-<script src="{% static "soundbook/js/jquery-ui-1.10.2.custom.min.js" %}"></script>
-<script src="{% static "soundbook/js/dropzone.js" %}"></script>
-<script src="{% static "soundbook/js/soundbook-admin.js" %}"></script>
-<script src="{% static "soundbook/js/soundbook.js" %}"></script>
+
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/main.css">
+<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/jquery-ui-1.10.2.custom.css">
+<script src="{{ STATIC_URL }}soundbook/js/jquery-1.9.1.min.js"></script>
+<script src="{{ STATIC_URL }}soundbook/js/jquery-ui-1.10.2.custom.min.js" %}></script>
+<script src="{{ STATIC_URL }}soundbook/js/knockout-2.2.1.js" %}></script>
+<script src="{{ STATIC_URL }}soundbook/js/soundbook.js" %}></script>
 
 
 </head>
@@ -23,12 +24,7 @@
 
 <div id="contact">
     <h2>Contact</h2>
-    <div id="contactForm">
-        <div><input type="text" value="Your Name"/></div>
-        <div><input type="text" value="Email"/></div>
-        <div><textarea>Your Message</textarea></div>
-        <input type="submit" value="send"/>
-    </div>
+    {% include "soundbook/contact.html" %}
     <div id="quickSlip">
             <div style="float:right;margin:5px">
                 <div class="social">L</div>
@@ -47,10 +43,7 @@
         
         <div class="row" id="row1">
             <div id="showreel" class="col player">
-                Showreel Player
-                <div class="controls">
-                    <div class="interactive play"></div>
-                </div>
+                <iframe src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 <div class="interactive read">
                     Read more
                 </div>
@@ -67,50 +60,32 @@
                     Back to Showreel
                 </div>
                 <div class="text">
-                    <h1>ADAM LORI</h1>
-<p>
-Pebbles, pebbles
-Sally's got the blues
-Storm come whistlin
-She forgot her shoes.
-<p/><p>
-One pickle, two pickle
-Pepper on the floor
-Wasted, wasted
-Salad in the drawer
-<p/><p>
-Sally's got nowhere to go, 
-Two bare feet and a field of snow. 
-</p>
+                    {% text_by_name "About" %}
                 </div>
             </div>
         </div>
         <div class="row">
-            <div id="portfolioPlayer" class="col player">
-                Portfolio Player
-                <div class="controls">
-                    <div class="interactive play"></div>
-                </div>
-                <div class="interactive back">
-                    Back to "Genre"
-                </div>
+            <div id="player" class="col" data-bind="with: chosenSample">
+                <iframe data-bind="attr: {src: $root.videoUrl }" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
             </div>
-            <div id="portfolio" class="col grid editable">
+            <div id="portfolio" class="col">
                 <div class="interactive back">
                     Back to Genres
                 </div>
-                <div class="interactive item editable"><h3>Outland</h3></div>
-                <div class="interactive item editable"><h3>No Easy Way Out</h3></div>
-                <div class="interactive item editable"><h3>Alteration</h3></div>
-                <div class="interactive item editable"><h3>Alice</h3></div>
+                <ul data-bind="foreach:samples">
+                    <li data-bind="click:$root.playSample"><span data-bind="text:fields.name"></span></li>
+                </ul>
+                <audio controls data-bind="with: chosenSample">
+                    <source data-bind="attr: {src: $root.mediaRoot + fields.audio}" type="audio/mpeg">
+                  Your browser does not support the audio element.
+                </audio>
             </div>
-            <ul id="categories" data-model="soundbook.genre" class="col grid editable">
-                {% for genre in genres %}
-                <li id="{{ genre.uid }}"><span>{{ genre.title }}</span></li>
-                {% endfor %}
-            </ul>
-        </div>
-        
+            <div id="categories" class="col">
+                <ul data-bind="foreach:genres">
+                    <li data-bind="click:$root.loadGenre"><span data-bind="text:fields.name"></span></li>
+                </ul>
+            </div>
+        </div>     
         <div class="row">
             <div id="festivals" class="col">
                 As seen in<br/>
@@ -124,8 +99,6 @@ Two bare feet and a field of snow.
         
     </div>
 </div>
-
-{% csrf_token %}
 
 
 </body>

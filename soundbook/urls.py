@@ -16,7 +16,6 @@ urlpatterns = patterns('',
 
     # Uncomment the next line to enable the admin:
     # url(r'^admin/', include(admin.site.urls)),
-    url(r'^edit/genre/$', views.GenreEdit.as_view() ),
-    url(r'^edit/genre/(?P<pk>[0-9]+)/$', views.GenreEdit.as_view() ),#Admin
-    url(r'^sort/$', 'soundbook.views.sort', name='Sort List' ),
+    url(r'^genres/$', views.GenreList.as_view() ),#Admin
+    url(r'^samples/$', views.SampleList.as_view() ),#Admin
 )
