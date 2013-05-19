@@ -1,325 +1,397 @@
 body {
-     font-family:  'Helvetica Neue',  Helvetica,  Arial,  sans-serif;
-     font-size:  12px;
-     color: #f0f6f4;
-     background-color: #000000;
-     padding: 0px;
-     margin: 0px;
- }
- div {
-     margin: 0px;
-     padding: 0px;
- }
- #cache {
-     position: relative;
-     width: 480px;
-     overflow: hidden;
-     margin-bottom:  80px;
- }
- #contactForm {
-     margin-bottom:  80px;
-     margin-left:  30px;
- }
- textarea {
-     width:  400px;
-     height:  200px;
-     resize: none;
+    font-family:  'Helvetica Neue',  Helvetica,  Arial,  sans-serif;
+    font-size:  12px;
+    color: #f0f6f4;
+    background-color: #000000;
+    padding: 0px;
+    margin: 0px;
  }
  
-#contact{
-    width:640px;
-    margin-bottom: 80px;
-    margin-left: 30px;
+
+
+h1 {
+    display:  block;
+    font-size:  30px;
+    line-height:  25%px;
+    margin:  0px;
+    padding:  0px;
+ }
+ 
+h2{
+    font-size: 20pt;
 }
+ 
+ div {
+    margin: 0px;
+    padding: 0px;
+ }
+ 
+ 
+#alignWrapper{
+    position: absolute;
+}
+
+#cache {
+   position: relative;
+   width: 640px;
+   overflow: hidden;
+   margin-bottom:  80px;
+}
+
+#menu{
+    float: left;
+    margin-right: 20px;
+}
+
+#contact {
+    position:  absolute;
+    width:  640px;
+    background:  #444444;
+    z-index:  999;
+    box-shadow:  0px 10px 30px -10px #000000;
+}
+
+#contact h2{
+    margin-left:30px;
+}
+
+#contact form{
+    margin-left:60px;
+    margin-bottom: 30px;
+    width:500px;
+}
+
+
 
 
 #contact form input[type="text"],textarea{
     border: solid 1px #000000;
-    background-color: #aaaaaa;
+    background-color: #777777;
     font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-size: 18px;
     color: #DDDDDD;
     padding:5px;
     font-weight: 100;
     letter-spacing: 1px;
-    width:100%
 }
+
 
 #contact form label{
     display: none;
+    
 }
 
 
 #contact form input[type="text"]{
-    width:80%;
+    width:60%;
 }
 
 #contact form textarea{
-    resize:none;    
+    resize:none;
+    width: 400px;
+    height: 150px;
 }
 
 
 #contact form input[type="submit"]{
     width:100px;
     color: #DDDDDD;
-    background: #555555; 
+    background: #555555;
 }
 
 #contact form input:focus, select:focus, textarea:focus {
     border: solid 1px #FFFFFF;
     outline:none;
 }
- #content {
-     position: relative;
-     padding-top:  50px;
-     width: 3000px;
- }
- .row {
-     clear:  left;
-     float:  left;
-     position: relative;
-     background:  #666666;
- }
- .col {
-     float: left;
-     display: block;
-     position:  relative;
-     width: 480px;
-     margin: 0px 0px 0px 0px;
- }
- #categories {
-     padding-top: 5px;
-     padding-bottom: 5px;
-     background:  #333333;
- }
- #categories ul {
-     list-style:  none;
-     list-style-type:  none;
-     padding: 0px;
-     margin: 0px;
- }
- #categories ul li {
-     float:  left;
-     position: relative;
-     margin: 0px 5px 5px 0px;
-     width: 150px;
-     height: 150px;
-     left: 10px;
-     background:  #222222;
-     cursor:  pointer;
- }
- #categories ul li span {
-     position: absolute;
-     font-size:  12px;
-     bottom: 5px;
-     right: 5px;
-     ont-size:  16px;
-     line-height:  16px;
-     margin: 0px;
-     padding:  0px;
-     font-weight:  200;
-     letter-spacing:  2px;
- }
- #portfolio {
- }
- #portfolio ul {
-     list-style:  none;
-     list-style-type:  none;
-     padding: 0px;
-     margin: 0px;
- }
- #portfolio ul li {
-     float:  left;
-     position: relative;
-     margin: 0px 5px 5px 0px;
-     width: 150px;
-     height: 85px;
-     left: 10px;
-     background:  #222222;
-     backgroundcolor:  #666666;
-     background-image:  url('images/play.png');
-     background-size:  20% 35%;
-     background-repeat:  no-repeat;
-     background-position:  50% 45%;
-     cursor:  pointer;
- }
- #portfolio ul li span {
-     position: absolute;
-     font-size:  10px;
-     bottom: 5px;
-     right: 5px;
-     ont-size:  16px;
-     line-height:  16px;
-     margin: 0px;
-     padding:  0px;
-     font-weight:  200;
-     letter-spacing:  2px;
- }
- #portfolio .back {
-     right:  10px;
-     bottom:  10px;
-     background:  #333333;
-     z-index: 50;
- }
- #portfolio audio {
-     display: none;
- }
- #contact {
-     position:  fixed;
-     width:  480px;
-     background:  #444444;
-     z-index:  999;
-     box-shadow:  0px 10px 30px -10px #000000;
- }
- #quickSlip {
-     position: absolute;
-     ba¼ckground:  #AAAAAA;
-     bottom: 0px;
-     width: 100%;
- }
- .social {
-     width:  43px;
-     height:  40px;
-     float:  left;
-     background:  #555555;
-     margin:  0px 5px 0px 0px;
-     color:  #DDDDDD;
-     padding:  0px 0px 0px 0px;
-     font-size:  20px;
-     font-weight:  400;
-     overflow:  hidden;
- }
- .right {
-     position:  absolute;
-     right:  0px;
- }
- .contactSlider {
-     float:  left;
-     height:  40px;
-     width:  80px;
-     background-image:  url('images/sliderBack.png');
-     background-repeat:  no-repeat;
-     background-position:  right;
-     background-size:  100% 100% }
- .handle {
-     width:  40px;
-     height:  40px;
-     background-image:  url('images/contactSlider.png');
-     background-size:  100% 100%;
- }
- #showreel {
-     position:  relative;
-     padding-top: 10px;
- }
- #readMore {
-     background:  #777777;
- }
- .text {
-     height: 200px;
-     margin: 50px;
- }
- .text h1 {
-     text-align:  right;
- }
- .text p {
-     font-size:  14px;
-     letter-spacing:  1px;
- }
- #portfolio {
-     background:  #555555;
-     min-height:  270px;
-     padding-top: 5px;
-     padding-bottom: 5px;
- }
- .controls {
-     position:  absolute;
-     width: 100%;
-     height: 100%;
-     top: 0px;
-     left: 0px;
- }
- .interactive {
-     cursor:  pointer;
- }
- #player {
-     width: 640px;
-     height: 360px;
-     background:  #888888;
- }
- .play {
-     display: block;
-     width: 70px;
-     height: 70px;
-     position: relative;
-     background-image:  url('images/play.png');
-     background-size:  100% 100%;
-     top: 50%;
-     left: 50%;
-     margin-left:  -35px;
-     margin-top:  -50px;
- }
+
+
+#content {
+    width: 2560px;
+}
+ 
+.row {
+   clear:  both;
+   float: left;
+   position: relative;
+   background:  #666666;
+}
+ 
+.col {
+   float: left;
+   display: block;
+   position:  relative;
+   width: 640px;
+   margin: 0px 0px 0px 0px;
+}
+ 
+#categories {
+   padding-top: 5px;
+   padding-bottom: 5px;
+   background:  #333333;
+}
+
+#categories ul {
+   list-style:  none;
+   list-style-type:  none;
+   padding: 0px;
+   margin: 0px;
+}
+
+#categories ul li {
+   float:  left;
+   position: relative;
+   margin: 0px 5px 5px 0px;
+   width: 150px;
+   height: 150px;
+   left: 10px;
+   background:  #222222;
+   cursor:  pointer;
+}
+ 
+#categories ul li span {
+   position: absolute;
+   font-size:  12px;
+   bottom: 5px;
+   right: 5px;
+   ont-size:  16px;
+   line-height:  16px;
+   margin: 0px;
+   padding:  0px;
+   font-weight:  200;
+   letter-spacing:  2px;
+}
+ 
+ 
+#portfolio {
+   background:  #555555;
+   min-height:  270px;
+   padding-top: 5px;
+   padding-bottom: 5px;
+}
+
+#portfolio ul {
+   list-style:  none;
+   list-style-type:  none;
+   padding: 0px;
+   margin: 0px;
+}
+
+#portfolio ul li {
+   float:  left;
+   position: relative;
+   margin: 0px 5px 5px 0px;
+   width: 150px;
+   height: 85px;
+   left: 10px;
+   background:  #222222;
+   backgroundcolor:  #666666;
+   background-image:  url('images/play.png');
+   background-size:  20% 35%;
+   background-repeat:  no-repeat;
+   background-position:  50% 45%;
+   cursor:  pointer;
+}
+ 
+#portfolio ul li span {
+   position: absolute;
+   font-size:  10px;
+   bottom: 5px;
+   right: 5px;
+   ont-size:  16px;
+   line-height:  16px;
+   margin: 0px;
+   padding:  0px;
+   font-weight:  200;
+   letter-spacing:  2px;
+}
+ 
+#portfolio .back {
+   right:  10px;
+   bottom:  10px;
+   background:  #333333;
+   z-index: 50;
+}
+
+#portfolio audio {
+   display: none;
+}
+
+#festivals {
+    padding:10px;
+}
+
+#festivals ul {
+    list-style:  none;
+    list-style-type:  none;
+    padding: 0px;
+    margin: 0px;
+}
+
+#festivals ul li {
+    float:  left;
+    position: relative;
+    margin: 0px 5px 5px 0px;
+    width: 150px;
+    height: 85px;
+    left: 10px;
+    background:  #222222;
+    backgroundcolor:  #666666;
+    background-size:  20% 35%;
+    background-repeat:  no-repeat;
+    background-position:  50% 45%;
+    cursor:  pointer;
+}
+ 
+#festivals ul li span {
+   position: absolute;
+   font-size:  10px;
+   bottom: 5px;
+   right: 5px;
+   ont-size:  16px;
+   line-height:  16px;
+   margin: 0px;
+   padding:  0px;
+   font-weight:  200;
+   letter-spacing:  2px;
+}
+ 
+#festivals .back {
+   right:  10px;
+   bottom:  10px;
+   background:  #333333;
+   z-index: 50;
+}
+
+#festivals audio {
+   display: none;
+}
+
+
+#quickSlip {
+   position: absolute;
+   background:#AAAAAA;
+   bottom: 0px;
+   float: right;
+   clear: both;
+   width: 580px;
+}
+
+
+.right {
+   position:  absolute;
+   right:  0px;
+}
+
+.opencontact {
+   float:  left;
+   width:  40px;
+   height:  40px;
+   background-image:  url('images/contactSlider.png');
+   background-repeat:  no-repeat;
+   background-position:  right;
+   background-size:  100% 100%
+}
+
+
+#showreel {
+
+}
+
+#readMore {
+   background:  #777777;
+}
+
+#player{
+    min-height: 300px;
+}
+
+.text {
+   height: 200px;
+   margin: 50px;
+}
+
+.text h1 {
+   text-align:  right;
+}
+
+.text p {
+   font-size:  14px;
+   letter-spacing:  1px;
+}
+
+
+.controls {
+    position:  absolute;
+    width: 100%;
+    height: 100%;
+    top: 0px;
+    left: 0px;
+}
+
+.interactive {
+    cursor:  pointer;
+}
+
+
+
+.play {
+    display: block;
+    width: 70px;
+    height: 70px;
+    position: relative;
+    background-image:  url('images/play.png');
+    background-size:  100% 100%;
+    top: 50%;
+    left: 50%;
+    margin-left:  -35px;
+    margin-top:  -50px;
+}
+
  .back {
      position: absolute;
      background:  #333333;
      width: 50px;
      height: 50px;
  }
- .player .back {
-     right: 10px;
-     top: 10px;
- }
- #readMore .back {
-     position: absolute;
-     left: 10px;
-     top: 10px;
- }
- .read {
-     display: block;
-     width: 50px;
-     height: 50px;
-     position: absolute;
-     ba¼ckground: #444444;
-     bottom: 40px;
-     left: 50px;
- }
- .listen {
-     display: block;
-     width: 50px;
-     height: 50px;
-     position: absolute;
-     background: #444444;
-     bottom: 40px;
- }
  
- #festivals {
-     background:  #666666;
- }
+.player .back {
+    right: 10px;
+    top: 10px;
+}
  
- #festivals .item {
-     height: 60px;
-     width: 100px;
-     background:  #AAAAAA;
-     margin-bottom: 20px;
-     top: 10px;
- }
+#readMore .back {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+}
+.read {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    ba¼ckground: #444444;
+    bottom: 40px;
+    left: 50px;
+}
+.listen {
+    display: block;
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: #444444;
+    bottom: 40px;
+}
  
- .name {
-     position: absolute;
-     bottom: 20px;
-     right: 10px;
- }
- .name h1 {
-     display:  block;
-     font-size:  30px;
-     line-height:  25%px;
-     margin:  0px;
-     padding:  0px;
- }
- .name h2 {
-     text-align:  right;
-     font-size:  20px;
-     line-height:  20px;
-     font-weight:  200;
-     margin:  0px;
-     padding:  0px;
- }
+#festivals {
+    background:  #666666;
+}
+ 
+#festivals .item {
+    height: 60px;
+    width: 100px;
+    background:  #AAAAAA;
+    margin-bottom: 20px;
+    top: 10px;
+}
+
+ 

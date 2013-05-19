@@ -1,5 +1,5 @@
 from django.contrib import admin
-from soundbook.models import Genre, Sample, TextField, NameValue
+from soundbook.models import Genre, Sample, TextField, NameValue, Reference
 
 
 class SampleInline( admin.StackedInline ):
@@ -24,6 +24,7 @@ class TextFieldAdmin(admin.ModelAdmin):
         ]   
 
 admin.site.register( Genre, GenreAdmin)
+admin.site.register( Reference )
 admin.site.register( TextField, TextFieldAdmin)
 admin.site.register( NameValue )
 

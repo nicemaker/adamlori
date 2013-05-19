@@ -21,85 +21,78 @@
 
 <body>
 
-
-<div id="contact">
-    <h2>Contact</h2>
-    {% include "soundbook/contact.html" %}
-    <div id="quickSlip">
-            <div style="float:right;margin:5px">
-                <div class="social">L</div>
-                <div class="social">F</div>
-                <div class="interactive contactSlider">
-                    <div class="handle"></div>
+<div id="alignWrapper">
+    <div id="menu">
+        <div class="interactive readmore" data-bind="click:toReadMore">
+            Read more
+        </div>
+        <div class="interactive opencontact" data-bind="click:switchContact"></div>  
+    </div>
+    <div id="cache">
+        <div id="contact">
+          <h2>Contact</h2>
+          {% include "soundbook/contact.html" %}
+        </div>
+        <div id="content">
+            <div class="row" id="row1">
+                <div id="showreel" class="col player">
+                    <iframe src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </div>
-                <div style="float:left;margin-left: 10px">Slide to contact<br/> Adam</div>
-            </div>          
+                <div id="readMore" class="col">
+                    <div class="interactive back" data-bind="click:toShowReel">
+                        Back to Showreel
+                    </div>
+                    <div class="text">
+                        {% text_by_name "About" %}
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div id="player" class="col" data-bind="with: chosenSample">
+                    <div class="interactive back" data-bind="with: $root.chosenGenre,click: $root.toSamples">
+                        Back to <span data-bind="text:fields.name"></span>
+                    </div>
+                    <iframe data-bind="attr: {src: $root.videoUrl }" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <div id="portfolio" class="col">
+                    <div class="interactive back" data-bind="click:toGenres">
+                        Back to Genres
+                    </div>
+                    <div class="name" data-bind="with: chosenGenre">
+                        <h1>Adam Lori <span data-bind="text:fields.name"></span></h1>
+                    </div>
+                    <ul data-bind="foreach:samples">
+                        <li data-bind="click:$root.playSample"><span data-bind="text:fields.name"></span></li>
+                    </ul>
+                    <audio controls data-bind="with: chosenSample">
+                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio}" type="audio/mpeg">
+                      Your browser does not support the audio element.
+                    </audio>
+                </div>
+                <div id="categories" class="col">
+                    <div class="name">
+                        <h1>Adam Lori <span>Composer</span></h1>
+                    </div>
+                    <ul data-bind="foreach:genres">
+                        <li data-bind="click:$root.loadGenre"><span data-bind="text:fields.name"></span></li>
+                    </ul>
+                </div>
+            </div>     
+            <div class="row">
+                <div id="festivals" class="col">
+                    <span style="float: left">As seen in</span>
+                    <ul>
+                        {% for ref in references %}
+                        <li><a href="{{ ref.url }}" target="_blank">{{ref.name}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </div>
+            </div>
+            
+            
+        </div>
     </div>
 </div>
-
-<div id="cache">
-    
-    <div id="content">
-        
-        <div class="row" id="row1">
-            <div id="showreel" class="col player">
-                <iframe src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-                <div class="interactive read">
-                    Read more
-                </div>
-                <div class="interactive listen">
-                    Listen more
-                </div>
-                 <div class="name">
-                    <h1>ADAM LORI</h1>
-                    <h2>Film Composer</h2>
-                </div>
-            </div>
-            <div id="readMore" class="col">
-                <div class="interactive back">
-                    Back to Showreel
-                </div>
-                <div class="text">
-                    {% text_by_name "About" %}
-                </div>
-            </div>
-        </div>
-        <div class="row">
-            <div id="player" class="col" data-bind="with: chosenSample">
-                <iframe data-bind="attr: {src: $root.videoUrl }" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
-            </div>
-            <div id="portfolio" class="col">
-                <div class="interactive back">
-                    Back to Genres
-                </div>
-                <ul data-bind="foreach:samples">
-                    <li data-bind="click:$root.playSample"><span data-bind="text:fields.name"></span></li>
-                </ul>
-                <audio controls data-bind="with: chosenSample">
-                    <source data-bind="attr: {src: $root.mediaRoot + fields.audio}" type="audio/mpeg">
-                  Your browser does not support the audio element.
-                </audio>
-            </div>
-            <div id="categories" class="col">
-                <ul data-bind="foreach:genres">
-                    <li data-bind="click:$root.loadGenre"><span data-bind="text:fields.name"></span></li>
-                </ul>
-            </div>
-        </div>     
-        <div class="row">
-            <div id="festivals" class="col">
-                As seen in<br/>
-                <div class="interactive item"></div>
-                <div class="interactive item"></div>
-                <div class="interactive item"></div>
-                <div class="interactive item"></div>
-            </div>
-        </div>
-        
-        
-    </div>
-</div>
-
 
 </body>
 </html>

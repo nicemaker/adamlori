@@ -35,20 +35,12 @@ class Sample( BaseModel):
     image = FileBrowseField("Image", max_length=200, directory="images/", extensions=[".png",".jpg"], blank=True, null=True)
     genre = models.ForeignKey( Genre,null=True,blank=True,default=None, verbose_name="Portfolio Genre" )
     
-    
-    def delete(self, *args, **kwargs):
-        self.image.delete()
-        super(Sample, self).delete(*args, **kwargs)
-        
-    def save(self, *args, **kwargs):
-        # delete old file when replacing by updating the file
-        try:
-            this = Sample.objects.get(id=self.id)
-            if this.image != self.image:
-                this.image.delete(save=False)
-        except: pass # when new photo then we do nothing, normal case          
-        super(Sample, self).save(*args, **kwargs)
 
+class Reference( BaseModel ):
+    image = FileBrowseField("Image", max_length=200, directory="images/", extensions=[".png",".jpg"], blank=True, null=True)
+    url = models.CharField("Url", max_length=300,blank=True,default='')
+    
+ 
     
 class TextField(models.Model):
     name = models.CharField( "Name", max_length=100,default='')

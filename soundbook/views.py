@@ -2,7 +2,7 @@
 
 
 from soundbook.forms import ContactForm
-from soundbook.models import Genre,Sample,NameValue,TextField
+from soundbook.models import Genre,Sample,NameValue,TextField, Reference
 
 from django.shortcuts import render,render_to_response, get_object_or_404
 from django.template import RequestContext
@@ -16,9 +16,10 @@ import json
 
 def index(request):
     genres = Genre.objects.all()
+    references = Reference.objects.all();
     text = TextField.objects.all()
     setting = NameValue.objects.all()
-    c = RequestContext( request, {"genres":genres, "form": ContactForm() })
+    c = RequestContext( request, {"genres":genres, "form": ContactForm(), "references": references })
     return render_to_response('soundbook/index.html', c)
 
 def contact(request):
