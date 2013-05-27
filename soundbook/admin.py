@@ -4,14 +4,14 @@ from soundbook.models import Genre, Sample, TextField, NameValue, Reference
 
 class SampleInline( admin.StackedInline ):
     model = Sample
-    fields = ("name","audio","image","mediaId","order")
+    fields = ("name","description","audio_mp3","audio_ogg","image","mediaId","order")
     sortable_field_name = "order"
     extra = 1;
 
     
 class GenreAdmin(admin.ModelAdmin):
     inlines = [ SampleInline, ]
-    list_display = ("name","order",)
+    list_display = ("name","description","order",)
     list_editable = ("order",)
     ordering = ("order",)
     

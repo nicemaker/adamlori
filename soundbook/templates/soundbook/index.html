@@ -6,42 +6,54 @@
 <html>
 <head>
     
-    <title>Sound Book</title>
+    <title>Adam Lori - Composer</title>
 
-
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/main.css">
-<link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/jquery-ui-1.10.2.custom.css">
-<script src="{{ STATIC_URL }}soundbook/js/jquery-1.9.1.min.js"></script>
-<script src="{{ STATIC_URL }}soundbook/js/jquery-ui-1.10.2.custom.min.js" %}></script>
-<script src="{{ STATIC_URL }}soundbook/js/knockout-2.2.1.js" %}></script>
-<script src="{{ STATIC_URL }}soundbook/js/soundbook.js" %}></script>
+    <meta name="format-detection" content="telephone=no">
+    
+    <link href='http://fonts.googleapis.com/css?family=Lustria|Open+Sans:300' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/main.css">
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/jquery-ui-1.10.2.custom.css">
+    
+    
+    <script src="{{ STATIC_URL }}soundbook/js/jquery-1.9.1.min.js"></script>
+    <script src="{{ STATIC_URL }}soundbook/js/jquery-ui-1.10.2.custom.min.js" %}></script>
+    <script src="{{ STATIC_URL }}soundbook/js/knockout-2.2.1.js" %}></script>
+    <script src="{{ STATIC_URL }}soundbook/js/soundbook.js" %}></script>
 
 
 </head>
 
 <body>
 
-<div id="alignWrapper">
-    <div id="menu">
-        <div class="interactive readmore" data-bind="click:toReadMore">
-            Read more
-        </div>
-        <div class="interactive opencontact" data-bind="click:switchContact"></div>  
-    </div>
+
+<div id="background">
     <div id="cache">
-        <div id="contact">
-          <h2>Contact</h2>
-          {% include "soundbook/contact.html" %}
-        </div>
+        <div id="header"><h1>ADAM LORI</h1><h2>COMPOSER</h2></div>
+       
         <div id="content">
+            <ul id="menu" class="menu">
+                <li class="interactive menuabout" data-bind="click:toAbout">
+                    ABOUT
+                </li>
+                <li class="interactive menureel" data-bind="click:toShowReel">
+                    SHOW
+                </li>
+                <li class="interactive menucontact" data-bind="click:toContact">
+                    CONTACT
+                </li>  
+            </ul>
             <div class="row" id="row1">
-                <div id="showreel" class="col player">
-                    <iframe src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                <div id="contact" class="col">
+                    <h3>Contact</h3>
+                    <div class="phone">Please call me under +44 (0) 7535 706 371<br/> or send me a message:</div>
+                    {% include "soundbook/contact.html" %}
                 </div>
-                <div id="readMore" class="col">
-                    <div class="interactive back" data-bind="click:toShowReel">
-                        Back to Showreel
-                    </div>
+                <div id="showreel" class="col player">
+                    <span class="title">SHOWREEL</span>
+                    <iframe id="showreelPlayer" src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp;api=1&amp;color=565A56" width="640" height="360" bgcolor="black" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                </div>
+                <div id="about" class="col">
+                    <h3>ABOUT</h3>
                     <div class="text">
                         {% text_by_name "About" %}
                     </div>
@@ -49,41 +61,50 @@
             </div>
             <div class="row">
                 <div id="player" class="col" data-bind="with: chosenSample">
-                    <div class="interactive back" data-bind="with: $root.chosenGenre,click: $root.toSamples">
-                        Back to <span data-bind="text:fields.name"></span>
-                    </div>
+                    <ul class="menu">
+                        <li class="interactive backRightBright" data-bind="with: $root.chosenGenre,click:$root.toSamples">
+                            BACK TO <span data-bind="text:fields.name"></span>
+                        </li>   
+                    </ul>
+                    <span class="title" data-bind="text:fields.name"></span>
                     <iframe data-bind="attr: {src: $root.videoUrl }" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </div>
-                <div id="portfolio" class="col">
-                    <div class="interactive back" data-bind="click:toGenres">
-                        Back to Genres
-                    </div>
-                    <div class="name" data-bind="with: chosenGenre">
-                        <h1>Adam Lori <span data-bind="text:fields.name"></span></h1>
-                    </div>
-                    <ul data-bind="foreach:samples">
+                
+                <div id="samples" class="col" data-bind="with: chosenGenre">
+                    <ul class="menu">
+                        <li class="interactive backRightBright" data-bind="click:$root.toGenres">
+                            BACK TO GENRES
+                        </li>   
+                    </ul>
+                    <div class='backdropFont' data-bind="text:fields.name"></div>
+                    <h3 data-bind="text:fields.name"></h3>
+                    <ul class="grid" data-bind="foreach:$root.samples">
                         <li data-bind="click:$root.playSample"><span data-bind="text:fields.name"></span></li>
                     </ul>
-                    <audio controls data-bind="with: chosenSample">
-                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio}" type="audio/mpeg">
-                      Your browser does not support the audio element.
+                    <audio  data-bind="with: $root.chosenSample">
+                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio_mp3}" type="audio/mpeg">
+                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio_ogg}" type="audio/mpeg">
                     </audio>
                 </div>
-                <div id="categories" class="col">
-                    <div class="name">
-                        <h1>Adam Lori <span>Composer</span></h1>
-                    </div>
-                    <ul data-bind="foreach:genres">
-                        <li data-bind="click:$root.loadGenre"><span data-bind="text:fields.name"></span></li>
+                <div id="genres" class="col">
+                    <div class='backdropFont'>WORK</div>
+                    <h3>WORK</h3>            
+                    <ul class="grid" data-bind="foreach:genres">
+                        <li data-bind="click:$root.loadGenre, text:fields.name"></li>
                     </ul>
                 </div>
+                
             </div>     
             <div class="row">
-                <div id="festivals" class="col">
-                    <span style="float: left">As seen in</span>
+                <div id="footer" class="col">
+                    <h4>SEEN IN</h4>
                     <ul>
                         {% for ref in references %}
-                        <li><a href="{{ ref.url }}" target="_blank">{{ref.name}}</a></li>
+                        <li>
+                            <a href="{{ ref.url }}" target="_blank">
+                            <img src="{{ref.image.url}}"/>
+                            </a>
+                        </li>
                         {% endfor %}
                     </ul>
                 </div>
@@ -93,6 +114,7 @@
         </div>
     </div>
 </div>
+
 
 </body>
 </html>
