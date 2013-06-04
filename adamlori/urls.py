@@ -22,6 +22,7 @@ urlpatterns = patterns('',
     url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^admin/', include(admin.site.urls)),
     url(r'^soundbook/', include('soundbook.urls') ),
+    url(r'^contact/', 'soundbook.views.contact', name='contact'),
     url(r'^$', 'soundbook.views.index', name='index'),
     
 )+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

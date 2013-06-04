@@ -10,6 +10,13 @@ body {
  }
  
 
+iframe{
+    position:relative;
+    display:block;
+    width:640px;
+    height 480px;
+    margin: 0px;
+}
 
 h1,h2,h3,h4{
     position:relative;
@@ -52,16 +59,6 @@ h4{
     padding: 0px;
  }
  
-.backdrop{
-    background: url( 'images/home_B_rev3.png' );
-    display:none;
-    position:absolute;
-    width: 960px;
-    height: 1000px;
-    opacity: .5;
-    z-index: 99;
-    
-}
 
 .backdropFont{
     font-family: 'Lustria', serif;
@@ -71,7 +68,12 @@ h4{
     color: #000000;
     position: absolute;
     top:20px;
+    width:1800px;
   
+}
+
+.grid{
+    min-height:200px;
 }
 
 #header{
@@ -169,7 +171,7 @@ ul.menu li{
     font-size: 12pt;
 }
 
-#contact form input[type="text"],textarea{
+#contact form input[type="text"],input[type="email"],textarea{
     font-family: 'Open Sans', 'Helvetica Neue',  Helvetica,  Arial,  sans-serif;
     font-size: 12pt;
     border: none;
@@ -181,7 +183,7 @@ ul.menu li{
 }
 
 
-#contact form input[type="text"]{
+#contact form input[type="text"],input[type="email"]{
     width:60%;
 }
 
@@ -220,12 +222,6 @@ ul.menu li{
     position:relative;
 }
 
-#menu{
-    position:absolute;
-    top:200px;
-    left:490px;
-    margin-top:40px;
-}
 
 
 #content .row {
@@ -240,8 +236,8 @@ ul.menu li{
     position:  relative;
     width: 640px;
     margin: 0px 0px 0px 0px;
-    min-height:  200px;
     overflow: hidden;
+    
 }
 
 
@@ -250,6 +246,11 @@ ul.menu li{
 }
 
 
+
+#genres ul.menu{
+    top:40px;
+    left:490px;
+}
 
 #genres ul.grid {
     overflow: auto;
@@ -310,12 +311,21 @@ ul.menu li{
     padding-bottom: 20px;
     color: #b2b6b2;
 }
- 
 
+#samples ul.grid li span.selected{
+    color:#ffffff;
+}
+ 
+#samples .audioPlayer{
+    position:relative;
+    width:100%;
+    height:80px;
+}
 
 
 #samples audio {
-   display:none;
+   position:relative;
+   width:100%;
 }
 
 #footer{
@@ -394,14 +404,23 @@ ul.menu li{
 
 
 #player{
-    background: #000000;
-    min-height: 300px;
+    padding: 35px 0px 40px 10px;
 }
+
 
 #player ul.menu{
     left:430px;
     top:40px;
 }
+
+#samplePlayer{
+    background: #000000;
+    margin-top:50px;
+    margin-bottom:30px;
+    position:relative;
+}
+
+
 
 .text {
     height: 200px;

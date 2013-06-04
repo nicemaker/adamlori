@@ -4,9 +4,9 @@ from soundbook.models import Genre, Sample, TextField, NameValue, Reference
 
 class SampleInline( admin.StackedInline ):
     model = Sample
-    fields = ("name","description","audio_mp3","audio_ogg","image","mediaId","order")
+    fields = ("name","description","audio_wav","audio_mp3","audio_ogg","image","mediaId","order")
     sortable_field_name = "order"
-    extra = 1;
+    extra = 0
 
     
 class GenreAdmin(admin.ModelAdmin):

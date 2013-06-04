@@ -14,12 +14,15 @@
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/main.css">
     <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}soundbook/style/jquery-ui-1.10.2.custom.css">
     
-    
+
     <script src="{{ STATIC_URL }}soundbook/js/jquery-1.9.1.min.js"></script>
     <script src="{{ STATIC_URL }}soundbook/js/jquery-ui-1.10.2.custom.min.js" %}></script>
+    <script src="http://a.vimeocdn.com/js/froogaloop2.min.js"></script>
     <script src="{{ STATIC_URL }}soundbook/js/knockout-2.2.1.js" %}></script>
     <script src="{{ STATIC_URL }}soundbook/js/soundbook.js" %}></script>
-
+    <script language="javascript">
+        soundbook.init( "{{ MEDIA_URL }}", "{{csrfToken}}" );
+    </script>
 
 </head>
 
@@ -31,17 +34,6 @@
         <div id="header"><h1>ADAM LORI</h1><h2>COMPOSER</h2></div>
        
         <div id="content">
-            <ul id="menu" class="menu">
-                <li class="interactive menuabout" data-bind="click:toAbout">
-                    ABOUT
-                </li>
-                <li class="interactive menureel" data-bind="click:toShowReel">
-                    SHOW
-                </li>
-                <li class="interactive menucontact" data-bind="click:toContact">
-                    CONTACT
-                </li>  
-            </ul>
             <div class="row" id="row1">
                 <div id="contact" class="col">
                     <h3>Contact</h3>
@@ -50,7 +42,7 @@
                 </div>
                 <div id="showreel" class="col player">
                     <span class="title">SHOWREEL</span>
-                    <iframe id="showreelPlayer" src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp;api=1&amp;color=565A56" width="640" height="360" bgcolor="black" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    <iframe id="showreelPlayer" src="http://player.vimeo.com/video/{% val_by_name "showreelId" %}?player_id=showreelPlayer&amp;title=1&amp;byline=0&amp;portrait=0&amp;badge=0&amp;api=1&amp;color=565A56" width="640" height="360" bgcolor="black" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
                 </div>
                 <div id="about" class="col">
                     <h3>ABOUT</h3>
@@ -60,33 +52,48 @@
                 </div>
             </div>
             <div class="row">
-                <div id="player" class="col" data-bind="with: chosenSample">
+                <div id="player" class="col">
                     <ul class="menu">
                         <li class="interactive backRightBright" data-bind="with: $root.chosenGenre,click:$root.toSamples">
                             BACK TO <span data-bind="text:fields.name"></span>
-                        </li>   
+                        </li>
+                        {% include  "soundbook/menu.html" %} 
                     </ul>
-                    <span class="title" data-bind="text:fields.name"></span>
-                    <iframe data-bind="attr: {src: $root.videoUrl }" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+                    <div data-bind="with: chosenSample">
+                        <div class='backdropFont' data-bind="text:fields.name"></div>
+                        <h3 data-bind="text:fields.name"></h3>
+                    </div>  
+                    <iframe id="samplePlayer" width="640" height="360" frameborder="0" webkitAllowFullScreen mozallowfullscreen allowFullScreen></iframe>
+           
                 </div>
                 
-                <div id="samples" class="col" data-bind="with: chosenGenre">
-                    <ul class="menu">
+                <div id="samples" class="col">
+                    <ul class="menu">     
                         <li class="interactive backRightBright" data-bind="click:$root.toGenres">
                             BACK TO GENRES
-                        </li>   
+                        </li>
+                        {% include  "soundbook/menu.html" %}            
                     </ul>
-                    <div class='backdropFont' data-bind="text:fields.name"></div>
-                    <h3 data-bind="text:fields.name"></h3>
+                    <div data-bind="with: chosenGenre">
+                        <div class='backdropFont' data-bind="text:fields.name"></div>
+                        <h3 data-bind="text:fields.name"></h3>
+                    </div>
                     <ul class="grid" data-bind="foreach:$root.samples">
-                        <li data-bind="click:$root.playSample"><span data-bind="text:fields.name"></span></li>
+                        <li data-bind="click:$root.playSample"><span data-bind="text:fields.name,css:{selected :$root.chosenSample() && $root.chosenSample().pk == pk}"></span></li>
                     </ul>
-                    <audio  data-bind="with: $root.chosenSample">
-                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio_mp3}" type="audio/mpeg">
-                        <source data-bind="attr: {src: $root.mediaRoot + fields.audio_ogg}" type="audio/mpeg">
-                    </audio>
+                    <div class="audioPlayer" data-bind="with: $root.chosenSample">
+                        <audio controls  data-bind="visible:$root.isAudio">
+                            <source data-bind="attr: {src: $root.mediaRoot() + fields.audio_wav}" type="audio/wav">
+                            <source data-bind="attr: {src: $root.mediaRoot() + fields.audio_mp3}" type="audio/mpeg">
+                            <source data-bind="attr: {src: $root.mediaRoot() + fields.audio_ogg}" type="audio/ogg">
+                        </audio>
+                        &nbsp;
+                    </div>
                 </div>
                 <div id="genres" class="col">
+                    <ul class="menu">
+                        {% include  "soundbook/menu.html" %}            
+                    </ul>
                     <div class='backdropFont'>WORK</div>
                     <h3>WORK</h3>            
                     <ul class="grid" data-bind="foreach:genres">

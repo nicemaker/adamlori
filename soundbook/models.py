@@ -30,6 +30,7 @@ class Genre( BaseModel ):
     
 class Sample( BaseModel):
     mediaId = models.CharField("Vimeo ID", max_length=100,blank=True,default='')
+    audio_wav = FileBrowseField("Audio WAV", max_length=200, directory="audio/", extensions=[".wav"], blank=True, null=True)
     audio_mp3= FileBrowseField("Audio MP3", max_length=200, directory="audio/", extensions=[".mp3"], blank=True, null=True)
     audio_ogg = FileBrowseField("Audio OGG", max_length=200, directory="audio/", extensions=[".ogg"], blank=True, null=True)
     image = FileBrowseField("Image", max_length=200, directory="images/", extensions=[".png",".jpg"], blank=True, null=True)
